@@ -1,4 +1,4 @@
-### ADS A - GitHub Repository
+### ADS Assessment - GitHub Repository
 
 #### Author - Muhammad Aiman bin Ahmad Hazimin 22011708
 
