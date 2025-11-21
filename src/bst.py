@@ -28,10 +28,7 @@ class BinarySearchTree:
                 self._insert_recursive(current_node.right, item_data)
 
     def search(self, target_id):
-        """
-        Optimized Algorithm: Binary Search
-        Time Complexity: O(log n)
-        """
+    
         return self._search_recursive(self.root, target_id, 0)
 
     def _search_recursive(self, current_node, target_id, steps):

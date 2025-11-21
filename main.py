@@ -3,7 +3,6 @@ import time
 import random
 import sys
 
-# Import our custom modules
 from src.linked_list import LinkedList
 from src.stack import Stack
 from src.bst import BinarySearchTree
@@ -20,36 +19,33 @@ def load_data(filepath):
         sys.exit(1)
 
 def find_matches_by_description(items, keyword):
-    """
-    Searches the dataset for items containing the keyword.
-    Returns a list of matches.
-    """
+    
     matches = []
     keyword = keyword.lower()
     for item in items:
-        # Check if keyword is in name or category
+        
         if keyword in item['name'].lower() or keyword in item['category'].lower():
             matches.append(item)
     return matches
 
 def main():
     print("=================================================")
-    print("   CAMPUS LOST-AND-FOUND SYSTEM (Group 25)     ")
+    print("   CAMPUS LOST-AND-FOUND SYSTEM   ")
     print("=================================================")
 
-    # 1. LOAD & PREPARE DATA
+    
     items_data = load_data('data/items.json')
     print(f"[System] Database loaded with {len(items_data)} items.")
 
-    # Populate Data Structures
+    
     ll = LinkedList()
     bst = BinarySearchTree()
 
-    # Insert into Baseline (Linked List)
+    
     for item in items_data:
         ll.insert(item)
 
-    # Insert into Optimized (BST) - Shuffle first to ensure balance
+    
     shuffled_data = items_data[:]
     random.shuffle(shuffled_data)
     for item in shuffled_data:
@@ -57,9 +53,7 @@ def main():
 
     print("[System] System Ready. Waiting for user input...\n")
 
-    # ===========================================
-    # STEP 1: USER SEARCH (Interactive)
-    # ===========================================
+    # user keyword search for losrt item
     while True:
         user_query = input(">> What did you lose? (e.g., 'blue wallet', 'keys'): ").strip()
         if not user_query:
@@ -68,7 +62,7 @@ def main():
             
         print(f"\n[Searching] Looking for items matching '{user_query}'...")
         
-        # Find candidates (This simulates looking through the public list)
+        
         matches = find_matches_by_description(items_data, user_query)
 
         if not matches:
@@ -78,19 +72,18 @@ def main():
         print(f"✅ Found {len(matches)} possible matches:\n")
         print(f"{'ID':<6} | {'Item Name':<25} | {'Location':<15}")
         print("-" * 55)
-        
-        # Display the first 10 matches to keep screen clean
+
+        #display only first 10 matches
         for item in matches[:10]:
             print(f"{item['id']:<6} | {item['name']:<25} | {item['location']:<15}")
         
         if len(matches) > 10:
             print(f"... and {len(matches) - 10} more.")
             
-        break # Exit the search loop once matches are found
+        break 
 
-    # ===========================================
-    # STEP 2: USER SELECTION & RETRIEVAL BENCHMARK
-    # ===========================================
+
+    # user id selection
     print("\n-------------------------------------------------")
     print("Which one is yours? Enter the ID to claim it.")
     
@@ -103,7 +96,7 @@ def main():
     print(f"\n[System] meaningful retrieval for Item ID #{selected_id}...")
     print("(Comparing Baseline vs. Optimized performance...)\n")
 
-    # --- BENCHMARK 1: BASELINE (Linked List) ---
+    # Benchmark 1 -linked list
     start_time = time.perf_counter()
     found_data, steps_ll = ll.linear_search(selected_id)
     end_time = time.perf_counter()
@@ -117,7 +110,7 @@ def main():
     print(f"   - Steps taken: {steps_ll}")
     print(f"   - Time taken: {time_ll:.4f} ms")
 
-    # --- BENCHMARK 2: OPTIMIZED (Binary Search Tree) ---
+    # Benchmark 2 - optimized (Binary Search Tree)
     start_time = time.perf_counter()
     found_data, steps_bst = bst.search(selected_id)
     end_time = time.perf_counter()
@@ -136,13 +129,11 @@ def main():
         speedup = steps_ll / steps_bst
         print(f"\n>> EFFICIENCY RESULT: The Optimized System was {speedup:.1f}x faster.")
     
-    # ===========================================
-    # STEP 3: QUEUE PROCESSING (Fairness Demo)
-    # ===========================================
+  
+    # Queue process comparison
     print("\n-------------------------------------------------")
     print("[Claim Process] Processing the waiting line...")
     
-    # Simulating a queue of students
     students = ["You (Arrived 1st)", "Student B (Arrived 2nd)", "Student C (Arrived 3rd)"]
     
     # Optimized Queue

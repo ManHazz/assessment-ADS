@@ -1,8 +1,5 @@
 class Stack:
-    """
-    Baseline Structure: Stack (LIFO)
-    Problem: Unfair processing (First person waits longest)
-    """
+  
     def __init__(self):
         self.items = []
 
@@ -12,7 +9,7 @@ class Stack:
     def pop(self):
         if not self.items:
             return None
-        return self.items.pop()  # Removes the LAST item added
+        return self.items.pop()  
 
     def is_empty(self):
         return len(self.items) == 0
