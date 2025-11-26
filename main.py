@@ -69,7 +69,7 @@ def main():
             print("❌ No items found matching that description. Try again.")
             continue
         
-        print(f"✅ Found {len(matches)} possible matches:\n")
+        print(f"Found {len(matches)} possible matches:\n")
         print(f"{'ID':<6} | {'Item Name':<25} | {'Location':<15}")
         print("-" * 55)
 
@@ -135,16 +135,22 @@ def main():
     print("[Claim Process] Processing the waiting line...")
     
     students = ["You (Arrived 1st)", "Student B (Arrived 2nd)", "Student C (Arrived 3rd)"]
-    
-    # Optimized Queue
+
+    print("\n--- Scenario A: Stack (Unfair/LIFO) ---")
+    stack = Stack()
+    for student in students:
+        stack.push(student)
+        print(f"  -> {student} added to stack.")
+    served_stack = stack.pop()
+    print(f"Now serving: {served_stack} (Last person in!)")
+
+    print("\n--- Scenario B: Queue (Fair/FIFO) ---")
     queue = Queue()
-    for s in students:
-        queue.enqueue(s)
-        
-    print(f"Current Queue: {students}")
-    print("Calling next student...")
-    served = queue.dequeue()
-    print(f"✅ Now serving: {served}")
+    for student in students:
+        queue.enqueue(student)
+        print(f"  -> {student} added to queue.")
+    served_queue = queue.dequeue()
+    print(f"Now serving: {served_queue} (First person in!)")
 
 if __name__ == "__main__":
     main()
