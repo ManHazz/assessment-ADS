@@ -1,10 +1,7 @@
-""
-The Lost & Found Data Structures Test System
-Writer: Ennaceur
-Goal: Verify that every data structure functions properly prior to deployment.
-
-The following operations are tested in this file: Linked List, Binary Search Tree, Stack, and Queue.
-""
+#The Lost & Found Data Structures Test System
+#Goal: Verify that every data structure functions properly prior to deployment.
+#The following operations are tested in this file:
+#Linked List, Binary Search Tree, Stack, and Queue.
 
 import sys
 sys.path.append('.')
@@ -12,7 +9,7 @@ sys.path.append('.')
 from src.linked_list import LinkedList
 from src.bst import BinarySearchTree
 from src.stack import Stack
-from src.my_queue import Queue
+from src.queue import Queue
 
 
 def test_linked_list():
@@ -38,8 +35,8 @@ def test_linked_list():
     print("\n[Test 1.2] Searching for existing item (ID: 200)...")
     result, steps = ll.linear_search(200)
     
-    if result and result.data['id'] == 200:
-        print(f"✓ Found item: {result.data['name']} (Steps: {steps})")
+    if result and result['id'] == 200:
+        print(f"✓ Found item: {result['name']} (Steps: {steps})")
     else:
         print("✗ FAILED: Could not find item with ID 200")
         test_passed = False
@@ -105,7 +102,7 @@ def test_binary_search_tree():
     
     for test_id in test_ids:
         result, steps = bst.search(test_id)
-        if result and result.data['id'] == test_id:
+        if result and result['id'] == test_id:
             print(f"  ✓ Found ID {test_id} in {steps} steps")
         else:
             print(f"  ✗ FAILED: Could not find ID {test_id}")
