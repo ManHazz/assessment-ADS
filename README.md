@@ -71,7 +71,7 @@ To verify every data structure, run the test suite:
 ```bash python test_system.py```
 
 This will perform thorough testing on the following:
-- Linked List operations
+-Linked List operations
 -Binary Search Tree Functions
 -Stack (LIFO) behavior
 -Queue (FIFO) behavior
