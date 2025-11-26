@@ -66,15 +66,25 @@ python main.py
 ---
 
 ## Testing
-
 To verify every data structure, run the test suite:
-```bash python test_system.py```
+
+On Windows:
+```
+python test_system.py
+```
+
+On Mac/Linux:
+```
+python3 test_system.py
+```
 
 This will perform thorough testing on the following:
--Linked List operations
--Binary Search Tree Functions
--Stack (LIFO) behavior
--Queue (FIFO) behavior
+- Linked List operations
+- Binary Search Tree operations
+- Stack (LIFO) behavior
+- Queue (FIFO) behavior
+
+All tests currently passing ✅ (4/4)
 
 ---
 
