@@ -31,8 +31,15 @@ First, you must create the dataset. The generator script creates 1,000 realistic
 1.  Open your terminal or command prompt.
 2.  Navigate to the project folder.
 3.  Run the generation script:
+
+    On Windows:
     ```bash
     python generate_data.py
+    ```
+
+    On Mac/Linux:
+    ```
+    python3 generate_data.py
     ```
     **Success:** You will see a message confirming `data/items.json` has been created.
 
@@ -40,8 +47,14 @@ First, you must create the dataset. The generator script creates 1,000 realistic
 
 ## How to Run the System
 To start the simulation, run the main program:
-```bash
+On Windows:
+```
 python main.py
+```
+
+On Mac/Linux:
+```
+python3 main.py
 ```
 
 ### System Workflow (What to Expect)
