@@ -10,7 +10,7 @@ from src.queue import Queue
 
 sys.setrecursionlimit(3000)
 
-def load_data(filepath):
+def load_data(filepath):    
     try:
         with open(filepath, 'r') as f:
             return json.load(f)
@@ -116,7 +116,7 @@ def main():
     end_time = time.perf_counter()
     time_bst = (end_time - start_time) * 1000 # ms
 
-    print(f"\n2. Optimized Approach (AVL/BST):")
+    print(f"\n2. Optimized Approach (BST):")
     if found_data:
         print(f"   - Status: RETRIEVED")
     else:
